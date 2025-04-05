@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Header({ text, bgColor, textColor }) {
     const headerStyle = {
         backgroundColor: bgColor,
-        color: textColor, // Fix: Change 'textColor' to 'color'
+        color: textColor,
     };
 
     return (
