@@ -2,13 +2,20 @@
 import React, {useState} from 'react';
 import  {Card} from "./shared/card";
 import SingleRating from "./SingleRating";
+import FeedbackContext from "../context/FeedbackContext";
+import {useContext} from "react";
 
-export function FeedbackForm({handleSubmit}) {
+export function FeedbackForm() {
+    // useContext is a hook that allows you to access the context value
+     // Destructure feedback from context
+
+    //useState is a hook that allows you to add state to a functional component
+    //useState takes an initial value and returns an array with the current state and a function to update it   
  const  [text, setText] = useState('');
  const  [disableButton, setDisableButton] = useState(true);
  const  [warningText, setWarningText] = useState("");
  const  [rating , setRating] = useState(10);
-
+ const {handleAddReview} = useContext(FeedbackContext);  
 
     const  handleOnChangeText = (e)=>{
         if (text === ""){
@@ -34,7 +41,7 @@ setWarningText(null)
       const newFeedback = {
           text,rating
       }
-            handleSubmit(newFeedback);
+            handleAddReview(newFeedback);
             setText("")
         }
     }

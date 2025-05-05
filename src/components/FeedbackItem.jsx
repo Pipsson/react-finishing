@@ -3,8 +3,11 @@ import React from "react";
 import Card from "./shared/card";
 import PropTypes from 'prop-types';
 import {FaTimes} from "react-icons/fa";
+import {useContext} from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
- function FeedbackItem({item, handleDelete}) {
+ function FeedbackItem({item, }) {
+
      // const [rating, setRating] = useState(0);
      // const [feedback, setFeedback] = useState("No feedback");
      //
@@ -20,13 +23,13 @@ import {FaTimes} from "react-icons/fa";
      //     });
      // }
 
-
+    const {deleteFeedback} = useContext(FeedbackContext);
     return (
         <Card>
             <div className="num-display">
                 {item.rating}
             </div>
-            <button className="close" onClick={()=> handleDelete(item.id)}>
+            <button className="close" onClick={()=> deleteFeedback(item.id)}>
                   <FaTimes />
             </button>
             <div className="text-display">
